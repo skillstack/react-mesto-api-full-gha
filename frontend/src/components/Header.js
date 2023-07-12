@@ -9,18 +9,6 @@ function Header({ onSignOut, email }) {
       <img className="header__logo" src={headerWhiteLogo} alt="Логотип место Россия" />
       <Routes>
         <Route
-          path="/signin"
-          element={
-            <Link
-              className="header__link"
-              to="/signup"
-            >
-              Регистрация
-            </Link>
-          }
-        />
-
-        <Route
           path="/signup"
           element={
             <Link
@@ -28,6 +16,18 @@ function Header({ onSignOut, email }) {
               to="/signin"
             >
               Войти
+            </Link>
+          }
+        />
+
+        <Route
+          path="/signin"
+          element={
+            <Link
+              className="header__link"
+              to="/signup"
+            >
+              Регистрация
             </Link>
           }
         />

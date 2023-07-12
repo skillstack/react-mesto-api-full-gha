@@ -11,6 +11,6 @@
 
 IP-адрес 62.84.116.94
 
-Frontend https://...
+Frontend https://iavianm.nomoredomains.rocks
 
-Backend https://...
+Backend https://backend.nomoredomains.work

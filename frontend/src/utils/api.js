@@ -1,7 +1,7 @@
 class Api {
   constructor(config) {
     this._url = config.url;
-    this._headers = config.headers;
+    // this._headers = config.headers;
   }
 
   _checkResponse(res) {
@@ -14,7 +14,11 @@ class Api {
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: this._headers
+      // headers: this._headers
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      }
     })
       .then((res) => {
         return this._checkResponse(res);
@@ -24,7 +28,11 @@ class Api {
   setUserInfo(formData) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      // headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
       body: JSON.stringify({
         name: formData.name,
         about: formData.about
@@ -38,7 +46,11 @@ class Api {
   updateAvatar(formData) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      // headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
       body: JSON.stringify(formData)
     })
       .then((res) => {
@@ -49,7 +61,11 @@ class Api {
   getInitialCard() {
     return fetch(`${this._url}/cards`, {
       method: "GET",
-      headers: this._headers
+      // headers: this._headers
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      }
     })
       .then((res) => {
         return this._checkResponse(res);
@@ -59,7 +75,11 @@ class Api {
   postNewCard(cardInfo) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
-      headers: this._headers,
+      // headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
       body: JSON.stringify(cardInfo)
     })
       .then((res) => {
@@ -70,7 +90,11 @@ class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
-      headers: this._headers
+      // headers: this._headers
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      }
     })
       .then((res) => {
         return this._checkResponse(res);
@@ -80,7 +104,11 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers
+      // headers: this._headers
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      }
     })
       .then((res) => {
         return this._checkResponse(res);
@@ -89,11 +117,12 @@ class Api {
 }
 
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-62',
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: '125408be-5dc1-412d-9828-ab11ebb03270'
-  }
+  url: 'https://backend.nomoredomains.work',
+  // url: 'http://localhost:3001',
+  // headers: {
+  //   'Content-Type': 'application/json',
+  //   Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+  // }
 })
 
 export default api;
