@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 62.84.116.94
+IP 62.84.116.94
 
 Frontend https://iavianm.nomoredomains.rocks
 
