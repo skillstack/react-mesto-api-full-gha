@@ -55,7 +55,6 @@ class ApiAuth {
 
 const apiAuth = new ApiAuth({
   url: 'https://backend.nomoredomains.work',
-  // url: 'http://localhost:3001',
   headers: {
     'Content-Type': 'application/json'
   }

@@ -1,7 +1,6 @@
 class Api {
   constructor(config) {
     this._url = config.url;
-    // this._headers = config.headers;
   }
 
   _checkResponse(res) {
@@ -14,7 +13,6 @@ class Api {
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      // headers: this._headers
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -28,7 +26,6 @@ class Api {
   setUserInfo(formData) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
-      // headers: this._headers,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -46,7 +43,6 @@ class Api {
   updateAvatar(formData) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
-      // headers: this._headers,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -61,7 +57,6 @@ class Api {
   getInitialCard() {
     return fetch(`${this._url}/cards`, {
       method: "GET",
-      // headers: this._headers
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -75,7 +70,6 @@ class Api {
   postNewCard(cardInfo) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
-      // headers: this._headers,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -90,7 +84,6 @@ class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
-      // headers: this._headers
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -104,7 +97,6 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
-      // headers: this._headers
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -118,11 +110,6 @@ class Api {
 
 const api = new Api({
   url: 'https://backend.nomoredomains.work',
-  // url: 'http://localhost:3001',
-  // headers: {
-  //   'Content-Type': 'application/json',
-  //   Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-  // }
 })
 
 export default api;
